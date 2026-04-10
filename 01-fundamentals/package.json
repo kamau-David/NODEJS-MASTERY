@@ -1,0 +1,13 @@
+{
+  "name": "01-fundamentals",
+  "version": "1.0.0",
+  "description": "Node.js fundamentals: variables, functions, modules",
+  "main": "commonjs-demo.js",
+  "scripts": {
+    "start": "node commonjs-demo.js",
+    "scope": "node variables-scope.js",
+    "functions": "node functions.js",
+    "esm": "node esm-demo.mjs"
+  },
+  "license": "MIT"
+}
