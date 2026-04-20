@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head><title>Live Chat</title></head>
+<body>
+  <ul id="messages"></ul>
+  <input id="input" autocomplete="off" placeholder="Type a message..." />
+  <button onclick="send()">Send</button>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script>
+    const socket = io();
+    const messages = document.getElementById('messages');
+    const input = document.getElementById('input');
+
+    function send() {
+      if (input.value) {
+        socket.emit('chatMessage', input.value);
+        input.value = '';
+      }
+    }
+
+    socket.on('chatMessage', (msg) => {
+      const li = document.createElement('li');
+      li.textContent = `${msg.id.slice(0,5)}: ${msg.text}`;
+      messages.appendChild(li);
+    });
+  </script>
+</body>
+</html>
